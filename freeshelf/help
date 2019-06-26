@@ -1,0 +1,31 @@
+def read_data(apps, schema_editor):
+    Book = apps.get_model('catalog', 'Book')
+
+    Book.objects.all().delete()
+
+    filename = os.path.join(settings.BASE_DIR, 'sample_books.csv')
+
+    with open(filename) as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        for row in reader:
+
+            book = Book(
+                title = row[0],
+                author = row[1],
+                url = row[2],
+                description = row[3]
+            )
+            
+            book.save()
+
+def do_nothing(apps, schema_editor):
+    pass
+
+    dependencies = [
+        ('catalog', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.RunPython(read_data, do_nothing)
+    ]
