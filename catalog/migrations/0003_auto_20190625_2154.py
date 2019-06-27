@@ -38,4 +38,3 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(read_data, do_nothing)
     ]
-    

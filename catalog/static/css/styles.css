@@ -1,0 +1,114 @@
+.float-class {
+    float: right;
+}
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+.actual-button-list {
+    list-style-type: none;
+    padding-left: 15%;
+    margin-right: 10%;
+}
+.content {
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    padding-top: 40px;
+}
+body {
+    background-color: #ffefd6;
+}
+.freeshelf-title {
+    font-size: 42px;
+    color: #24211e;
+    font-family: 'Merriweather', serif;
+    letter-spacing: 2.5;
+}
+.text-box {
+    border: 1px solid #24211e;
+    background: rgba(247, 240, 220, 0.7);
+}
+
+.header-img {
+    text-align: center;
+    height: 250px;
+    padding-top: 150px;
+    width: 100%;
+    background: url('/static/images/library-warm.jpg');
+    background-size: cover;
+}
+
+button {
+    color: #000;
+    text-transform: uppercase;
+    outline: none;
+    font-size: 0.5em;
+    font-weight: 600;
+    background: rgba(247, 240, 220, 0.9);
+    padding: 1em 1.5em;
+    box-shadow: inset 0 -2px 0 0 rgba(0,0,0,.2);
+}
+
+button:hover {
+    color: #555;
+}
+
+button:active {
+    color: rgba(36, 33, 30, 1);
+    box-shadow: inset 0 -4px 0 0 rgba(0,0,0,.2);
+  }
+
+.main-nav-head {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 0;
+    position: absolute;
+    /* width: 100%; */
+    border-bottom: 1px solid #ffb347;
+    line-height: 0.9;
+    width: 98.7%;
+}
+
+.main-nav{
+    float: right;
+}
+
+.actual-nav-list {
+    display: inline;
+    margin-left: 20px;
+}
+
+.actual-nav-links {
+    color: white;
+    font-size: 0.975rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+            
+.actual-nav-links:hover{
+    color: #ffb347;
+    border-bottom: 2px #ffb347 solid;
+    transition: color 0.3s ease-in-out;
+    transition: border-bottom 0.2s ease-in-out;
+}
+
+/* .actual-nav-links:active{
+    color: #ffb347;
+} */
+
+/* .actual-nav-links:nth-child(2n){
+    color: RGBA(244, 201, 0, 1);
+    border-bottom: 2px RGBA(244, 201, 0, 1) solid;
+}
+
+.actual-nav-links:nth-child(3n){
+    color: RGBA(0, 179, 168, 1);
+    border-bottom: 2px RGBA(0, 179, 168, 1) solid;
+}
+
+.actual-nav-links:nth-child(4n){
+color: RGBA(57, 120, 187, 1);
+border-bottom: 2px RGBA(57, 120, 187, 1) solid;
+} */

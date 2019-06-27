@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Freeshelf</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="float-class">
+    <ul class="buttons-container">
+      <li class="actual-button-list"><a href=""><button type="button">Login</button></a></li>
+      <li class="actual-button-list"><a href=""><button type="button">Signup</button></a></li>
+    </ul>
+  </div>
+  <div class="header-img">
+    <div class="text-box">
+      <h1 class="freeshelf-title">Freeshelf</h1>
+    </div>
+  </div>
+  
+{% block sidebar %}
+<header class="main-nav-head">
+  <div class="wrapper">
+    <nav class="main-nav">
+      <ul class="sidebar-nav">
+        <li class="actual-nav-list"><a class="actual-nav-links" href="{% url 'index' %}">Home</a></li>
+        <li class="actual-nav-list"><a class="actual-nav-links" href="">Books</a></li>
+        <li class="actual-nav-list"><a class="actual-nav-links" href="">Categories</a></li>
+        <li class="actual-nav-list"><a class="actual-nav-links" href="">Favourites</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+{% endblock %}
+<div class="content">{% block content %}{% endblock %}</div>
+</body>
+</html>
