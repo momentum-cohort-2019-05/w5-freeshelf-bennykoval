@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Welcome to FreeShelf, a website to fulfill all your open source needs!</h1>
-    <p>The library has the following free books in stock:</p>
-
+    <h1>Python books:</h1>
     <ul class="book-list-detail">
         {% for book in books %}
         <li class="book-title">{{ book.title }}</li>

@@ -26,4 +26,5 @@ urlpatterns = [
     path('', RedirectView.as_view(url='index/', permanent=True)),
     path('admin/', admin.site.urls),
     path('index/', views.index, name='index'),
+    path ('python/', views.python, name='python'),
 ]

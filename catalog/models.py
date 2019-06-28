@@ -22,6 +22,7 @@ class Book(models.Model):
     category = models.ManyToManyField(Category)
     timestamp = models.DateField(default=date.today)
     url = models.URLField(unique=True)
+    image_url = models.URLField(null=True)
 
     user = models.ForeignKey(to=User, on_delete=models.SET_NULL, null=True)
 
