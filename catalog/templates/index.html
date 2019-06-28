@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Freeshelf Home</h1>
-    <p>Welcome to FreeShelf, a website to fulfill all your open source needs!</p>
-    <h2>Dynamic content</h2>
-    <p>The library has the following record counts:</p>
+    <h1>Welcome to FreeShelf, a website to fulfill all your open source needs!</h1>
+    <p>The library has the following free books in stock:</p>
 
     <ul>
         {% for book in books %}
-        <li>
-            {{ book.title }}
-
-        </li>
+        <li>{{ book.title }}</li>
+        <li>{{ book.timestamp }}</li>
+        <li>{{ book.author }}</li>
+        <li>{{ book.summary }}</li>
 
         {% endfor %}
     </ul>

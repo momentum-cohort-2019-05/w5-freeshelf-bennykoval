@@ -5,12 +5,21 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Category(models.Model):
+    category_name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.category_name
+
+    def get_absolute_url(self):
+        return reverse('category-books', args=[str(self.id)])
+
 class Book(models.Model):
     """Model representing a book."""
     title = models.CharField(max_length=200, help_text='Enter the title of the book')
     author = models.CharField(max_length=200, help_text='Enter the author of the book')
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
-    #coding_category = models.ManyToManyField('Category', help_text='Select a genre for this book')
+    category = models.ManyToManyField(Category)
     timestamp = models.DateField(default=date.today)
     url = models.URLField(unique=True)
 
