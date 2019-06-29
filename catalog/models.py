@@ -38,7 +38,7 @@ class Favourite(models.Model):
     book = models.ForeignKey(to=Book, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{}: {}'.format(self.user.username, self.book.title)
+        return f"{self.user.username} {self.book.title}"
     
     def get_absolute_url(self):
         return reverse('favourite-books', args=[str(self.id)])
