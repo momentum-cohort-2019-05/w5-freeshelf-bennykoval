@@ -19,7 +19,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200, help_text='Enter the title of the book')
     author = models.CharField(max_length=200, help_text='Enter the author of the book')
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
-    category = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category)
     timestamp = models.DateField(default=date.today)
     url = models.URLField(unique=True)
     image_url = models.URLField(null=True)

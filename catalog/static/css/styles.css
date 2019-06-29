@@ -122,8 +122,9 @@ button:active{
     text-decoration: none;
     transition: color 0.2s ease-in-out;
 }
-
-.sub-nav-links:hover{
+.sub-nav-links:hover,
+.sub-nav-links:active,
+.sub-nav-links:focus-within{
     display: block;
     color: #ffb347;
     border-bottom: 2px #ffb347 solid;
@@ -140,15 +141,18 @@ button:active{
     list-style-type: none;   
 }
 
+ul li:focus-within > ul,
 .sub-nav-list:hover {
     display: block;
     list-style-type: none;
 }
 .book-covers {
     display: flex;
+    max-width: 250px;
 }
-/* .book-list-detail {
-} */
+.book-list-detail {
+    list-style-type: none;
+} 
 
 /* .book-title {
     list-style-type: square;

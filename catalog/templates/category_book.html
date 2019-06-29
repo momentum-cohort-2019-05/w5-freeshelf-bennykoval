@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Python books:</h1>
+    <h1> {{category.category_name}} books:</h1>
     <ul class="book-list-detail">
-        {% for book in books %}
+        {% for book in books_by_category %}
         <li class="book-title">{{ book.title }}</li>
         <li>{{ book.timestamp }}</li>
         <li>{{ book.author }}</li>

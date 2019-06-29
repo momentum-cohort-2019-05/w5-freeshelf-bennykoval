@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% block title %}<title>Freeshelf</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Add additional CSS in static file -->
@@ -12,8 +11,12 @@
 <body>
   <div class="float-class">
     <ul class="buttons-container">
-      <li class="actual-button-list"><a href=""><button type="button">Login</button></a></li>
-      <li class="actual-button-list"><a href=""><button type="button">Signup</button></a></li>
+        {% if request.user.is_authenticated %}
+        <li class="actual-button-list"><a href="{% url 'auth_logout' %}"><button type="button">Logout</button></a></li>
+        {% else %}
+      <li class="actual-button-list"><a href="{% url 'auth_login' %}"><button type="button">Login</button></a></li>
+      <li class="actual-button-list"><a href="{% url 'registration_register' %}"><button type="button">Signup</button></a></li>
+        {% endif %}
     </ul>
   </div>
   <div class="header-img">
@@ -32,11 +35,11 @@
         <li class="actual-nav-list"><a class="actual-nav-links" href="">Favourites</a></li>
         <li class="actual-nav-list" id="category-list"><a class="actual-nav-links" href="">Categories</a></li>
           <ul class="sub-nav-list">
-            <li class="categories-list"><a class="sub-nav-links" href="{% url 'python' %}">Python</a></li>
-            <li class="categories-list"><a class="sub-nav-links" href="">Django</a></li>
-            <li class="categories-list"><a class="sub-nav-links" href="">CLI</a></li>
-            <li class="categories-list"><a class="sub-nav-links" href="">JavaScript</a></li>
-            <li class="categories-list"><a class="sub-nav-links" href="">Something</a></li>
+            <li class="categories-list"><a class="sub-nav-links" href="/category-books/1">Python</a></li>
+            <li class="categories-list"><a class="sub-nav-links" href="/category-books/2">Django</a></li>
+            <li class="categories-list"><a class="sub-nav-links" href="/category-books/3">CLI</a></li>
+            <li class="categories-list"><a class="sub-nav-links" href="/category-books/4">JavaScript</a></li>
+            <li class="categories-list"><a class="sub-nav-links" href="/category-books/5">Lua</a></li>
           </ul>
       </ul>
     </nav>
