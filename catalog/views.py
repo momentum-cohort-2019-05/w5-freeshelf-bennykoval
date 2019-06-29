@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from catalog.models import Book, Category
+from catalog.models import Book, Category, Favourite
 from django.views import generic
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -9,9 +10,14 @@ def index(request):
 
     # Generate counts of some of the main objects
     books = Book.objects.all()
-    
+    favourites = []
+    if request.user:
+        for fav in Favourite.objects.filter(user=request.user):
+            favourites.append(fav.book)
+        
     context = {
-        'books': books,   
+        'books': books,
+        'favourites': favourites,
     }
 
     # Render the HTML template index.html with the data in the context variable
@@ -29,3 +35,25 @@ def list_books_by_category(request, category_pk):
         'category': category,
     }
     return render(request, 'category_book.html', context=context)
+
+def favourite_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    existing_favourites = Favourite.objects.filter(user=request.user,book=book)
+    print(existing_favourites)
+    if existing_favourites.count() > 0:
+        existing_favourites.delete()
+    else:
+        newFav = Favourite(
+            user=request.user,
+            book=book
+        )
+        newFav.save()
+    return HttpResponseRedirect(request.GET.get("next"))
+
+def favourite_book_list(request):
+    favourites = Favourite.objects.filter(user=request.user)
+    context = {
+        'favourites': favourites,
+    }
+
+    return render(request, 'favourites.html', context=context)

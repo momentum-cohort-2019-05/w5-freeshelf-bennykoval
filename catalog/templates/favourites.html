@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <p>Welcome, {{request.user.username}}:</p>
+
+    <ul class="book-list-detail">
+        {% for favourite in favourites %}
+        <li class="book-title">{{ favourite.book.title }}</li>
+        <li>{{ favourite.book.timestamp }}</li>
+        <li>{{ favourite.book.author }}</li>
+        <li>{{ favourite.book.summary }}</li>
+        <li><img class="book-covers" src="{{ favourite.book.image_url }}"></li>
+
+        <a href="{% url 'favourite-book' favourite.book.pk %}?next={{ request.path }}">unfavourite</a>
+
+        {% endfor %}
+    </ul>
+{% endblock %}

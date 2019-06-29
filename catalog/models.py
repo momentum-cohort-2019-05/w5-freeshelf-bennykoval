@@ -33,6 +33,16 @@ class Book(models.Model):
         """String for representing the Model object."""
         return self.title
 
+class Favourite(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    book = models.ForeignKey(to=Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{}: {}'.format(self.user.username, self.book.title)
+    
+    def get_absolute_url(self):
+        return reverse('favourite-books', args=[str(self.id)])
+
 # class Category(models.Model):
 #     """Model representing a category."""
 

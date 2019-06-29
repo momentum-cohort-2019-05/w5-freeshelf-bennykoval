@@ -11,6 +11,12 @@
         <li>{{ book.summary }}</li>
         <li><img class="book-covers" src="{{ book.image_url }}"></li>
 
+        {% if request.user.is_authenticated and book in favourites %}
+        <a href="{% url 'favourite-book' book.pk %}?next={{ request.path }}">unfavourite</a>
+        {% elif request.user.is_authenticated %}
+        <a href="{% url 'favourite-book' book.pk %}?next={{ request.path }}">favourite</a>
+        {% endif %}
+
         {% endfor %}
     </ul>
 {% endblock %}

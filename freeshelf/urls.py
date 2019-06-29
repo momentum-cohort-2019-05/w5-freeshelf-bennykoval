@@ -28,4 +28,6 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path ('category-books/<int:category_pk>', views.list_books_by_category, name='python'),
     path('accounts/', include('registration.backends.simple.urls')),
+    path('favourite-book-list/', views.favourite_book_list, name='favourites'),
+    path('new-favourite/<int:pk>/', views.favourite_book, name='favourite-book'),
 ]
