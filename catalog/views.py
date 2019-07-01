@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from catalog.models import Book, Category, Favourite
 from django.views import generic
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -11,7 +12,7 @@ def index(request):
     # Generate counts of some of the main objects
     books = Book.objects.all()
     favourites = []
-    if request.user:
+    if not request.user.is_anonymous:
         for fav in Favourite.objects.filter(user=request.user):
             favourites.append(fav.book)
         
@@ -19,7 +20,6 @@ def index(request):
         'books': books,
         'favourites': favourites,
     }
-
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
 
@@ -36,6 +36,7 @@ def list_books_by_category(request, category_pk):
     }
     return render(request, 'category_book.html', context=context)
 
+@login_required
 def favourite_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     existing_favourites = Favourite.objects.filter(user=request.user,book=book)
@@ -50,6 +51,7 @@ def favourite_book(request, pk):
         newFav.save()
     return HttpResponseRedirect(request.GET.get("next"))
 
+@login_required
 def favourite_book_list(request):
     favourites = Favourite.objects.filter(user=request.user)
     context = {

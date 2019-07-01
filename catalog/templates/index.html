@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Welcome to FreeShelf, a website to fulfill all your open source needs!</h1>
-    <p>The library has the following free books in stock:</p>
+    <h1 class="welcome">Welcome to FreeShelf, an educational resource for beginner developers!</h1>
+    <p class="stock">The library has the following free books in stock:</p>
 
     <ul class="book-list-detail">
         {% for book in books %}
-        <li class="book-title">{{ book.title }}</li>
-        <li>{{ book.timestamp }}</li>
-        <li>{{ book.author }}</li>
-        <li>{{ book.summary }}</li>
-        <li><img class="book-covers" src="{{ book.image_url }}"></li>
-
+        <div class="book-list-styling">
+            <li><img class="book-covers" src="{{ book.image_url }}"></li>
+        </div>
+        <details>
+            <summary>Details</summary>
+            <li class="book-title">{{ book.title }}</li>
+            <li class="book-author">{{ book.author }}</li>
+            <li class="book-summary">{{ book.summary }}</li>
+        </details>
+    
         {% if request.user.is_authenticated and book in favourites %}
         <a href="{% url 'favourite-book' book.pk %}?next={{ request.path }}">unfavourite</a>
         {% elif request.user.is_authenticated %}

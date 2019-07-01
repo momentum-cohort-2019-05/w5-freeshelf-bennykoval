@@ -4,11 +4,15 @@
 
     <ul class="book-list-detail">
         {% for favourite in favourites %}
-        <li class="book-title">{{ favourite.book.title }}</li>
-        <li>{{ favourite.book.timestamp }}</li>
-        <li>{{ favourite.book.author }}</li>
-        <li>{{ favourite.book.summary }}</li>
-        <li><img class="book-covers" src="{{ favourite.book.image_url }}"></li>
+        <div class="book-info-styling">
+            <li class="book-title">{{ book.title }}</li>
+            <li class="book-timestamp">{{ book.timestamp }}</li>
+            <li class="book-author">{{ book.author }}</li>
+            <li class="book-summary">{{ book.summary }}</li>
+        <div class=book-covers-styling>
+            <li><img class="book-covers" src="{{ book.image_url }}"></li>
+        </div>
+        </div>
 
         <a href="{% url 'favourite-book' favourite.book.pk %}?next={{ request.path }}">unfavourite</a>
 

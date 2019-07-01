@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+
     <h1> {{category.category_name}} books:</h1>
     <ul class="book-list-detail">
-        {% for book in books_by_category %}
-        <li class="book-title">{{ book.title }}</li>
-        <li>{{ book.timestamp }}</li>
-        <li>{{ book.author }}</li>
-        <li>{{ book.summary }}</li>
-        <li><img class="book-covers" src="{{ book.image_url }}"></li>
-
+            {% for favourite in favourites %}
+            <div class="book-info-styling">
+                <li class="book-title">{{ book.title }}</li>
+                <li class="book-timestamp">{{ book.timestamp }}</li>
+                <li class="book-author">{{ book.author }}</li>
+                <li class="book-summary">{{ book.summary }}</li>
+            </div>
+            <div class=book-covers-styling>
+                <li><img class="book-covers" src="{{ book.image_url }}"></li>
+            </div>
+    </ul>
         {% if request.user.is_authenticated and book in favourites %}
         <a href="{% url 'favourite-book' book.pk %}?next={{ request.path }}">unfavourite</a>
         {% elif request.user.is_authenticated %}
         <a href="{% url 'favourite-book' book.pk %}?next={{ request.path }}">favourite</a>
         {% endif %}
-
         {% endfor %}
-    </ul>
 {% endblock %}

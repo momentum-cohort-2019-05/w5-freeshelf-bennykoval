@@ -6,6 +6,7 @@
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -31,7 +32,6 @@
     <nav class="main-nav">
       <ul class="sidebar-nav">
         <li class="actual-nav-list"><a class="actual-nav-links" href="{% url 'index' %}">Home</a></li>
-        <li class="actual-nav-list"><a class="actual-nav-links" href="">Books</a></li>
         <li class="actual-nav-list"><a class="actual-nav-links" href="{% url 'favourites' %}">Favourites</a></li>
         <li class="actual-nav-list" id="category-list"><a class="actual-nav-links" href="">Categories</a></li>
           <ul class="sub-nav-list">
