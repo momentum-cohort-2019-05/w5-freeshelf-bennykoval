@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-    <p>Welcome, {{request.user.username}}:</p>
+    <h1 class="welcome">Below are your favourites, {{request.user.username}}:</h1>
 
     <ul class="book-list-detail">
         {% for favourite in favourites %}
-        <div class="book-info-styling">
-            <li class="book-title">{{ book.title }}</li>
-            <li class="book-timestamp">{{ book.timestamp }}</li>
-            <li class="book-author">{{ book.author }}</li>
-            <li class="book-summary">{{ book.summary }}</li>
-        <div class=book-covers-styling>
-            <li><img class="book-covers" src="{{ book.image_url }}"></li>
+        <div class="book-list-styling">
+            </li><img class="book-covers" src="{{ favourite.book.image_url }}"></li>
         </div>
-        </div>
+        <details>
+            <summary>More information</summary>
+        <li class="book-title">{{ favourite.book.title }}</li>
+        <li class="book-author">{{ favourite.book.author }}</li>
+        <li class="book-summary">{{ favourite.book.summary }}</li>
+    </details>
 
-        <a href="{% url 'favourite-book' favourite.book.pk %}?next={{ request.path }}">unfavourite</a>
-
+    <div class="fav-parent">
+        <a class="fav" href="{% url 'favourite-book' favourite.book.pk %}?next={{ request.path }}"><button type="button">unfavourite</button></a>
+    </div>
         {% endfor %}
     </ul>
-{% endblock %}
+{% endblock %} 

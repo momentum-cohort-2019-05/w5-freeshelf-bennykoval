@@ -9,18 +9,18 @@
             <li><img class="book-covers" src="{{ book.image_url }}"></li>
         </div>
         <details>
-            <summary>Details</summary>
-            <li class="book-title">{{ book.title }}</li>
-            <li class="book-author">{{ book.author }}</li>
-            <li class="book-summary">{{ book.summary }}</li>
+            <summary>More information</summary>
+            <li class="book-info">{{ book.title }}</li>
+            <li class="book-info">{{ book.author }}</li>
+            <li class="book-info">{{ book.summary }}</li>
         </details>
-    
+    <div class="fav-parent">
         {% if request.user.is_authenticated and book in favourites %}
-        <a href="{% url 'favourite-book' book.pk %}?next={{ request.path }}">unfavourite</a>
+        <a class="fav" href="{% url 'favourite-book' book.pk %}?next={{ request.path }}"><button type="button">unfavourite</button></a>
         {% elif request.user.is_authenticated %}
-        <a href="{% url 'favourite-book' book.pk %}?next={{ request.path }}">favourite</a>
+        <a class="fav" href="{% url 'favourite-book' book.pk %}?next={{ request.path }}"><button type="button">favourite</button></a>
         {% endif %}
-
+    </div>
         {% endfor %}
     </ul>
 {% endblock %}
