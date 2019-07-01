@@ -176,11 +176,11 @@ details {
 }
 
 summary {
-    list-style-image: url('/static/images/closed-book.jpg');
+    list-style-image: url('/static/images/hardbound-book-variant.svg');
 }
 
 summary::-webkit-details-marker {
-    background: url('/static/images/closed-book.jpg');
+    background: url('/static/images/hardbound-book-variant.svg');
     color: transparent;
 }
 
