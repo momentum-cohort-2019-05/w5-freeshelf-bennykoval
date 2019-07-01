@@ -6,13 +6,14 @@
     <ul class="book-list-detail">
         {% for book in books %}
         <div class="book-list-styling">
-            <li><img class="book-covers" src="{{ book.image_url }}"></li>
+            <li><a href="{{ book.url }}"><img class="book-covers" src="{{ book.image_url }}"></a></li>
         </div>
         <details>
             <summary>More information</summary>
             <li class="book-info">{{ book.title }}</li>
             <li class="book-info">{{ book.author }}</li>
             <li class="book-info">{{ book.summary }}</li>
+            <li class="book-info"><a class="url-failsafe" href="{{ book.url }}">Start reading now!</a></li>
         </details>
     <div class="fav-parent">
         {% if request.user.is_authenticated and book in favourites %}

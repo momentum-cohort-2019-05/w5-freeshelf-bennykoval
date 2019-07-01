@@ -5,14 +5,15 @@
     <ul class="book-list-detail">
         {% for favourite in favourites %}
         <div class="book-list-styling">
-            </li><img class="book-covers" src="{{ favourite.book.image_url }}"></li>
+            <li><img class="book-covers" src="{{ favourite.book.image_url }}"></li>
         </div>
         <details>
             <summary>More information</summary>
-        <li class="book-title">{{ favourite.book.title }}</li>
-        <li class="book-author">{{ favourite.book.author }}</li>
-        <li class="book-summary">{{ favourite.book.summary }}</li>
-    </details>
+            <li class="book-info">{{ favourite.book.title }}</li>
+            <li class="book-info">{{ favourite.book.author }}</li>
+            <li class="book-info">{{ favourite.book.summary }}</li>
+            <li class="book-info"><a class="url-failsafe" href="{{ favourite.book.url }}">Start reading now!</a></li>
+        </details>
 
     <div class="fav-parent">
         <a class="fav" href="{% url 'favourite-book' favourite.book.pk %}?next={{ request.path }}"><button type="button">unfavourite</button></a>

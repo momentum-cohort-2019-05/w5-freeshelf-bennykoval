@@ -200,7 +200,7 @@ summary::-webkit-details-marker {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 .fav {
@@ -214,9 +214,23 @@ summary::-webkit-details-marker {
 }
 
 .book-info {
-    padding: 1%;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-size: 1.2rem;
     list-style-image: url('/static/images/orange-cover.svg');
+}
+
+.url-failsafe {
+    text-decoration: none;
+    color: #24211e;
+}
+.url-failsafe:hover,
+.url-failsafe:focus-within{
+    color: #663e07;
+    border-bottom: 2px #663e07 solid;
+    transition: color 0.3s ease-in-out;
+    transition: border-bottom 0.2s ease-in-out;
 }
 /* .book-covers{
     width:200px;
